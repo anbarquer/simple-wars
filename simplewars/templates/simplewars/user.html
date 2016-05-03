@@ -1,0 +1,105 @@
+{% extends "simplewars/base.html" %}
+{% block title %}SimpleWars - Gestión del usuario{% endblock %}
+{% block content %}
+    {% include 'simplewars/partials/dialog_deactivate_user.html' %}
+    {% include 'simplewars/partials/dialog_delete_user.html' %}
+    {% include 'simplewars/partials/messages.html' %}
+    <div class="row">
+        <div class="six columns">
+            <div class="title_bar">
+                <h4>Modificar información</h4>
+            </div>
+            <div class="panel">
+                <section class="pill tabs">
+                    <ul class="tab-nav">
+                        <li class="active"><a href="#">Usuario</a></li>
+                        <li class=""><a href="#">Contraseña</a></li>
+                        <li class=""><a href="#">Email</a></li>
+                    </ul>
+                    <div class="tab-content active">
+                        <form id="change_user" action="{% url 'user' %}" method="post">
+                            {% csrf_token %}
+                            <ul>
+                                {% for field in user_form %}
+                                    <li class="field">{{ field }}</li>
+                                    <p id="{{ field.name }}_error"></p>
+                                {% endfor %}
+                            </ul>
+                            <div class="medium metro info btn"><input id="submit_change_username" type="submit"
+                                                                      value="Cambiar"/></div>
+                            <div class="medium metro info btn"><input type="reset" value="Borrar"/></div>
+                        </form>
+                    </div>
+                    <div class="tab-content">
+                        <form id="change_pass" action="{% url 'user' %}" method="post">
+                            {% csrf_token %}
+                            <ul>
+                                {% for field in pass_form %}
+                                    <li class="field">{{ field }}</li>
+                                    <p id="{{ field.name }}_error"></p>
+                                {% endfor %}
+                            </ul>
+                            <div class="medium metro info btn ttip" data-tooltip="Tendrá que volver a identificarse">
+                                <input
+                                        type="submit" value="Cambiar"/></div>
+                            <div class="medium metro info btn"><input type="reset" value="Borrar"/></div>
+                        </form>
+                    </div>
+                    <div class="tab-content">
+                        <form id="change_email" action="{% url 'user' %}" method="post">
+                            {% csrf_token %}
+                            <ul>
+                                {% for field in email_form %}
+                                    <li class="field">{{ field }}</li>
+                                    <p id="{{ field.name }}_error"></p>
+                                {% endfor %}
+                            </ul>
+                            <div class="medium metro info btn "><input type="submit" id="submit_change_email"
+                                                                       value="Cambiar"/></div>
+                            <div class="medium metro info btn"><input type="reset" value="Borrar"/></div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="six columns">
+            <div class="title_bar">
+                <h4>Datos de usuario</h4>
+            </div>
+
+
+            <div id="user_data">
+                <table class="rounded">
+                    <tbody>
+                    <tr>
+                        <td>Nombre</td>
+                        <td id="username">{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td id="email">{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Útima visita</td>
+                        <td>{{ user.last_login }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de registro</td>
+                        <td>{{ user.date_joined }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="user_deactivate_delete">
+                <div class="medium metro info btn ttip"
+                     data-tooltip="Puede volver a activar el perfil cuando lo desee">
+                    <a href="#" class="switch" gumby-trigger="#deactivate_user">Desactivar</a>
+                </div>
+                <div class="medium metro danger btn ttip"
+                     data-tooltip="La cuenta se eliminará por completo">
+                    <a href="#" class="switch" gumby-trigger="#delete_user">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

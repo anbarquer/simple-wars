@@ -1,0 +1,23 @@
+<div class="modal" id="deactivate_user">
+    <div class="row">
+        <div class="centered twelve columns">
+            <div class="dialog">
+                <h4>¿Está seguro?</h4>
+
+                <p>Si vuelve a identificarse podrá restaurar su cuenta</p>
+
+                <form action="{% url 'user' %}" method="post">
+                    {% csrf_token %}
+                    <p class="medium info btn">
+                        <input type="submit" value="Aceptar"/>
+                    </p>
+                    <input type="hidden" id="deactivate" name="deactivate" value="deactivate">
+
+                    <p class="medium metro info btn">
+                        <input type="reset" value="Cancelar" class="close switch" gumby-trigger="|#deactivate_user"/>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

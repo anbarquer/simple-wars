@@ -1,0 +1,28 @@
+{% extends "simplewars/base.html" %}
+{% block title %}SimpleWars - Registro{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="twelve columns">
+            <div class="title_bar">
+                <h4>Registro</h4>
+            </div>
+            <form id="register" action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                {% if error %}
+                    <ul>
+                        <li class="danger alert" style="text-align: center;">{{ error }}</li>
+                    </ul>
+                {% endif %}
+                <ul>
+                    {% for field in form %}
+                        <li class="field">{{ field }}</li>
+                        <p id="{{ field.name }}_error"></p>
+                    {% endfor %}
+                </ul>
+                <div class="medium metro info btn"><input type="submit" value="Registrarse"/></div>
+                <div class="medium metro info btn"><input type="reset" value="Borrar"/></div>
+                <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Identifícate</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

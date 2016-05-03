@@ -1,0 +1,60 @@
+{% extends "simplewars/base.html" %}
+{% block title %}SimpleWars - Panel de control{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="twelve columns">
+            <div class="title_bar">
+                <h4>Estadísticas</h4>
+            </div>
+            <div class="panel">
+                <ul class="two_up tiles">
+                    <li>
+                        <p>Unidades reclutadas: {{ game_user.units_created }}</p>
+                    </li>
+                    <li>
+                        <p>Unidades eliminadas: {{ game_user.units_deleted }}</p>
+                    </li>
+                    <li>
+                        <p>Unidades perdidas: {{ game_user.units_lost }}</p>
+                    </li>
+                    <li>
+                        <p>Victorias: {{ game_user.wins }}</p>
+                    </li>
+                    <li>
+                        <p>Derrotas: {{ game_user.loses }}</p>
+                    </li>
+                    <li>
+                        <p>Puntos de mejora usados: {{ game_user.upgrade_points }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <div class="title_bar">
+                <h4>Clasificación</h4>
+            </div>
+            <div class="scroll_table">
+                <table id="users_list" class="rounded">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Victorias</th>
+                        <th>Derrotas</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.user__username }}</td>
+                            <td>{{ user.wins }}</td>
+                            <td>{{ user.loses }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

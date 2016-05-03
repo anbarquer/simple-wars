@@ -1,0 +1,22 @@
+<div id="formation_table">
+    <div class="scroll_table">
+        <table id="formation_list" class="rounded">
+            <thead>
+            <tr>
+                <th data-sort="string">Nombre</th>
+                <th data-sort="string">Mapa</th>
+                <th data-sort="int">Unidades</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for formation in formations %}
+                <tr>
+                    <td>{{ formation.formation_name }}</td>
+                    <td>{{ formation.formation_map }}</td>
+                    <td>{{ formation.formation_count }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

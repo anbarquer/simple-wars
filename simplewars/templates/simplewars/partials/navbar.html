@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<div class="navcontain">
+    <div class="navbar">
+        <div class="row">
+            <a class="toggle" gumby-trigger=".navbar > .row > ul" href=""><i class="icon-menu"
+                                                                             title=".icon-menu"></i></a>
+
+            <h1 class="twelve columns logo">
+                <a href={% url 'index' %}>
+                    <img src="{% static 'simplewars/img/sw_logo.png' %}" gumby-retina/>
+                </a>
+            </h1>
+        </div>
+    </div>
+</div>

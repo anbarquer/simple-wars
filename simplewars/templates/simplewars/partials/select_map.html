@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<div class="title_bar">
+    <h4>Mapa</h4>
+</div>
+<div class="panel">
+    <p id="selected_name">Mapa seleccionado: -</p>
+    <ul>
+        <li class="field">
+            <div class="picker">
+                <select id="select_map">
+                    <option value="#" disabled>Seleccione mapa...</option>
+                    {% for map in maps %}
+                        <option value="{{ map.map_name }}">{{ map.map_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </li>
+    </ul>
+
+    {% for map in maps %}
+        {% with '/static/simplewars/img/' as img_route %}
+            <img id="{{ map.map_name }}" style="display:none" src="{{ img_route|add:map.map_name|add:".png" }}"
+                 gumby-retina/>
+        {% endwith %}
+    {% endfor %}
+
+    <form id="load_map_form" action="{% url 'create-formation' %}" method="post">
+        {% csrf_token %}
+        <div class="medium metro info btn"><input id="load_map_submit" type="submit" value="Cargar"/></div>
+    </form>
+</div>

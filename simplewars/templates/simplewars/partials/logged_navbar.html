@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<div class="navcontain">
+
+    <div class="navbar" gumby-fixed="top">
+        <div class="row">
+            <a class="toggle" gumby-trigger=".navbar > .row > ul" href=""><i class="icon-menu"
+                                                                             title=".icon-menu"></i></a>
+
+            <h1 class="three columns logo">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'simplewars/img/sw_logo.png' %}" gumby-retina/>
+                </a>
+            </h1>
+            <ul class="nine columns">
+                <li>
+                    <a href="{% url 'army' %}">Unidades</a>
+
+                </li>
+                <li>
+                    <a href="#!">Formación</a>
+
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="{% url 'create-formation' %}">Crear</a></li>
+                            <li><a href="{% url 'list-formation' %}">Modificar</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="{% url 'battle' %}">Batalla</a>
+                </li>
+                <li><a href="{% url 'user' %}">Usuario</a></li>
+                <li>
+                    <button class="medium info btn icon-right entypo icon-logout">
+                        <a href="{% url 'logout' %}">Salir</a>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

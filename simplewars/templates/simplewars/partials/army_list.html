@@ -1,0 +1,82 @@
+<section class="pill tabs">
+    <ul class="tab-nav">
+        <li class="active"><a href="#">Cuerpo a cuerpo</a></li>
+        <li class=""><a href="#">Defensa</a></li>
+        <li class=""><a href="#">Distancia</a></li>
+    </ul>
+
+    <div class="tab-content active">
+        <div class="scroll_table">
+            <table id="melee_units" class="rounded">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th data-sort="int">Nivel</th>
+                    <th data-sort="int">Vida</th>
+                    <th data-sort="int">Ataque</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for unit in melee %}
+                    <tr id="{{ unit.pk }}">
+                        <td><a href="#" class="unit_link"/><i class="icon-plus-circled"></i></td>
+                        <td>{{ unit.level }}</td>
+                        <td>{{ unit.life }}</td>
+                        <td>{{ unit.attack }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="scroll_table">
+            <table id="defense_units" class="rounded">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th data-sort="int">Nivel</th>
+                    <th data-sort="int">Vida</th>
+                    <th data-sort="int">Defensa</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for unit in defense %}
+                    <tr id="{{ unit.pk }}">
+                        <td><a href="#" class="unit_link"/><i class="icon-plus-circled"></i></td>
+                        <td>{{ unit.level }}</td>
+                        <td>{{ unit.life }}</td>
+                        <td>{{ unit.defense }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="tab-content">
+        <div class="scroll_table">
+
+            <table id="distance_units" class="rounded">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th data-sort="int">Nivel</th>
+                    <th data-sort="int">Vida</th>
+                    <th data-sort="int">Alcance</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for unit in distance %}
+                    <tr id="{{ unit.pk }}">
+                        <td><a href="#" class="unit_link"/><i class="icon-plus-circled"></i></td>
+                        <td>{{ unit.level }}</td>
+                        <td>{{ unit.life }}</td>
+                        <td>{{ unit.scope }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

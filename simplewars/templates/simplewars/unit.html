@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="twelve columns">
+        <div class="title_bar">
+            <h4>Características</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="four columns">
+        <div id="units_cost">
+            <p class="credits">Créditos: {{ user_credits }}</p>
+
+            <p class="total_cost">Coste: 0</p>
+
+            <p class="final_credits">Resto: {{ user_credits }}</p>
+        </div>
+    </div>
+    <div class="four columns">
+        <div id="unit_info">
+            <p id="id">ID: {{ unit.pk }}</p>
+
+            <p id="level">Nivel: {{ unit.level }}</p>
+
+            <p id="points">Puntos: {{ unit.upgrade_points }}</p>
+        </div>
+    </div>
+    <div class="four columns">
+        <div id="upgrade_atts">
+            <p id="life">Vida: {{ unit.life }}</p>
+
+            <div class="small info btn" onClick="subtract_life('{{ unit.type }}')">
+                <a href="#!"><i class="icon-minus-squared"></i></a>
+            </div>
+            <div class="small info btn" onClick="add_life()">
+                <a href="#!"><i class="icon-plus-squared"></i></a>
+            </div>
+            {% if unit.type == 0 %}
+                <p id="attack">Ataque: {{ unit.attack }}</p>
+                <div class="small info btn" onClick="subtract_attack()">
+                    <a href="#!"><i class="icon-minus-squared"></i></a>
+                </div>
+                <div class="small info btn" onClick="add_attack()">
+                    <a href="#!"><i class="icon-plus-squared"></i></a>
+                </div>
+            {% endif %}
+            {% if unit.type == 2 %}
+                <p id="scope">Alcance: {{ unit.scope }}</p>
+                <div class="small info btn" onClick="subtract_scope()">
+                    <a href="#!"><i class="icon-minus-squared"></i></a>
+                </div>
+                <div class="small info btn" onClick="add_scope()">
+                    <a href="#!"><i class="icon-plus-squared"></i></a>
+                </div>
+            {% endif %}
+            {% if unit.type == 1 %}
+                <p id="defense">Defensa: {{ unit.defense }}</p>
+                <div class="small info btn" onClick="subtract_defense()">
+                    <a href="#!"><i class="icon-minus-squared"></i></a>
+                </div>
+                <div class="small info btn" onClick="add_defense()">
+                    <a href="#!"><i class="icon-plus-squared"></i></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+        <div id="show_recruit_buttons">
+            <form id="upgrade_unit" action="{% url 'unit' unit.pk %}" method="post">
+                {% csrf_token %}
+                <div class="medium metro info btn"><input id="submit_upgrade" type="submit" value="Modificar"/></div>
+                <div class="medium metro info btn"><input id="cancel_upgrade" type="reset" value="Cancelar"/></div>
+            </form>
+        </div>
+    </div>
+</div>
+

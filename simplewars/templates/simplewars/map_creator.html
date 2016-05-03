@@ -1,0 +1,78 @@
+{% extends "simplewars/base.html" %}
+{% block title %}SimpleWars - Creador de mapas{% endblock %}
+{% block content %}
+    <div class="modal" id="modal1">
+        <div class="row">
+            <div class="centered twelve columns">
+                <div class="dialog">
+                    <h4>Creando mapa</h4>
+
+                    <p class="loading">Espere</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <div class="title_bar">
+                <h4>Datos</h4>
+            </div>
+            <div class="panel">
+                <form id="save_map" action="{% url 'map-creator' %}" method="post">
+                    {% csrf_token %}
+                    {% if error %}
+                        <ul>
+                            <li class="danger alert" style="text-align: center;">{{ error }} </li>
+                        </ul>
+                    {% endif %}
+                    <ul>
+                        {% for field in map_form %}
+                            <li class="field">{{ field }}</li>
+                            <p id="{{ field.name }}_error"></p>
+                        {% endfor %}
+                    </ul>
+                    <p class="medium metro info btn"><input type="submit" value="Guardar"/></p>
+                </form>
+                <div class="medium metro info btn" onclick="show_map()"><a href="#!">Mostrar/Ocultar</a></div>
+                <div class="medium metro info btn" onclick="random_map()"><a href="#!">Aleatorio</a></div>
+                <div class="medium metro info btn" onclick="clean_map_creator()"><a href="#!">Resetear</a></div>
+            </div>
+            <div class="panel">
+                <div class="field">
+                    <i class="icon-db-shape" style="color:#58C026"></i>
+                    <label for="x">X</label>
+                    <input class="xnarrow text input" type="text" id="x"/>
+                    <label for="y">Y</label>
+                    <input class="xnarrow text input" type="text" id="y"/>
+                    <label for="q">Q</label>
+                    <input class="xnarrow text input" type="text" id="q"/>
+                    <label for="r">R</label>
+                    <input class="xnarrow text input" type="text" id="r"/>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="field">
+                    <i class="icon-db-shape" style="color:#CA3838"></i>
+                    <label for="x2">X</label>
+                    <input class="xnarrow text input" type="text" id="x2"/>
+                    <label for="y2">Y</label>
+                    <input class="xnarrow text input" type="text" id="y2"/>
+                    <label for="q2">Q</label>
+                    <input class="xnarrow text input" type="text" id="q2"/>
+                    <label for="r2">R</label>
+                    <input class="xnarrow text input" type="text" id="r2"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% include 'simplewars/partials/messages.html' %}
+    <div class="row">
+        <div class="twelve columns">
+            <div class="panel">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

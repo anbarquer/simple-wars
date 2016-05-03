@@ -1,0 +1,33 @@
+{% extends "simplewars/base.html" %}
+{% block title %}SimpleWars - Identificación{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="twelve columns">
+            <div class="title_bar">
+                <h4>Identificación</h4>
+            </div>
+            <form id="login" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {% if error %}
+                    <ul>
+                        <li class="danger alert" style="text-align: center;">{{ error }} </li>
+                    </ul>
+                {% endif %}
+                <ul>
+                    {% for field in form %}
+                        <li class="field">{{ field }}</li>
+                        <p id="{{ field.name }}_error"></p>
+                    {% endfor %}
+                </ul>
+                {% if activate %}
+                    <div class="medium metro default btn"><input type="submit" value="Activar"/></div>
+                    <input type="hidden" id="activate" name="activate" value="activate">
+                {% else %}
+                    <div class="medium metro info btn"><input type="submit" value="Identificarse"/></div>
+                {% endif %}
+                <div class="medium metro info btn"><input type="reset" value="Borrar"/></div>
+                <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Registro</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

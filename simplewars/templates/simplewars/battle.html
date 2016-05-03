@@ -1,0 +1,254 @@
+{% extends "simplewars/base.html" %}
+{% block title %}SimpleWars - Batalla{% endblock %}
+{% block content %}
+    <div class="modal" id="modal1">
+        <div class="row">
+            <div class="centered twelve columns">
+                <div class="dialog">
+                    <h4>Procesando simulación</h4>
+
+                    <p>Puede tardar unos minutos</p>
+
+                    <span id="minutes">00</span>:<span id="seconds">00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="simulation_data">
+        <div class="row">
+            <div class="six columns">
+                <div class="title_bar">
+                    <h4>Parámetros de la simulación</h4>
+                </div>
+                <div class="panel">
+                    <p id="label_enemy_mult">Multiplicador de enemigos</p>
+                    <ul>
+                        <li class="field">
+                            <div class="picker">
+                                <select id="select_enemy_mult">
+                                    <option value="#" disabled>Seleccione multiplicador...</option>
+                                    <option value="0">0 %</option>
+                                    <option value="-10">-10 %</option>
+                                    <option value="-20">-20 %</option>
+                                    <option value="-30">-30 %</option>
+                                    <option value="-40">-40 %</option>
+                                    <option value="-50">-50 %</option>
+                                    <option value="+10">+10 %</option>
+                                    <option value="+20">+20 %</option>
+                                    <option value="+30">+30 %</option>
+                                    <option value="+40">+40 %</option>
+                                    <option value="+50">+50 %</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                    <p id="label_enemy_types">Tipo de enemigos</p>
+                    <ul>
+                        <li class="field">
+                            <div class="picker">
+                                <select id="select_enemy_types">
+                                    <option value="#" disabled>Seleccione tipos...</option>
+                                    <option value="Todos">Todos</option>
+                                    <option value="Cuerpo a cuerpo">Cuerpo a cuerpo</option>
+                                    <option value="Defensa">Defensa</option>
+                                    <option value="Distancia">Distancia</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                    <p id="label_max_level">Nivel máximo enemigo</p>
+                    <ul>
+                        <li class="field">
+                            <div class="picker">
+                                <select id="select_max_level">
+                                    <option value="#" disabled>Seleccione nivel...</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>Modo espejo</p>
+                    <input id="mirror_yes" type="radio" name="mirror" value="mirror_yes">Si
+                    <input id="mirror_no" type="radio" name="mirror" value="mirror_no" checked="checked">No
+
+                </div>
+            </div>
+            <div class="six columns">
+                <div class="title_bar">
+                    <h4>Datos de la simulación</h4>
+                </div>
+                <div class="panel">
+                    <p id="selected_formation">Formación seleccionada: - </p>
+
+                    <p id="formation_map">Mapa: - </p>
+
+                    <p id="enemy_mult">Multiplicador de enemigos: 0 %</p>
+
+                    <p id="enemy_types">Tipo de enemigos: Todos</p>
+
+                    <p id="max_level">Nivel máximo: 0</p>
+
+                    <p id="mirror">Espejo: No</p>
+
+                    <form id="battle_form" action="{% url 'battle' %}" method="post">
+                        {% csrf_token %}
+                        <div class="medium metro info btn"><input id="battle_submit" type="submit" value="Comenzar"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% include 'simplewars/partials/messages.html' %}
+        <div class="row">
+            <div class="twelve columns">
+                <div class="title_bar">
+                    <h4>Formación</h4>
+                </div>
+                {% include 'simplewars/partials/formation_list.html' %}
+            </div>
+        </div>
+    </div>
+    <div id="simulation_battle" style="display:none">
+        <div class="row">
+            <div class="four columns">
+                <div class="title_bar">
+                    <h4>Aliados</h4>
+                </div>
+                <div class="deploy_legend">
+                    <ul class="two_up tiles">
+                        <li>
+                            <p>Cuerpo a cuerpo</p>
+                        </li>
+                        <li>
+                            <p><i class="icon-record" id="melee_icon"></i></p>
+                        </li>
+                        <li>
+                            <p>Defensa</p>
+                        </li>
+                        <li>
+                            <p><i class="icon-record" id="defense_icon"></i></p>
+                        </li>
+                        <li>
+                            <p>Distancia</p></li>
+                        <li>
+                            <p><i class="icon-record" id="distance_icon"></i></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="four columns">
+                <div class="title_bar">
+                    <h4>Enemigos</h4>
+                </div>
+                <div class="deploy_legend">
+                    <ul class="two_up tiles">
+                        <li>
+                            <p>Cuerpo a cuerpo </p>
+                        </li>
+                        <li>
+                            <p><i class="icon-record" id="melee_enemy_icon"></i></p>
+                        </li>
+                        <li>
+                            <p>Defensa</p>
+                        </li>
+                        <li>
+                            <p><i class="icon-record" id="defense_enemy_icon"></i></p>
+                        </li>
+                        <li>
+                            <p>Distancia</p></li>
+                        <li>
+                            <p><i class="icon-record" id="distance_enemy_icon"></i></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="four columns">
+                <div class="title_bar">
+                    <h4>Controles</h4>
+                </div>
+                <div id="play_controls">
+                    <div class="medium metro info btn" onclick="play_simulation()"><a href="#!"><i
+                            class="icon-play"
+                            style="color:white"></a></i>
+                    </div>
+                    <div class="medium metro info btn" onclick="pause_simulation()"><a href="#!"><i
+                            class="icon-pause"
+                            style="color:white"></i></a>
+                    </div>
+                    <div class="medium metro info btn" onclick="stop_simulation()"><a href="#!"><i
+                            class="icon-stop"
+                            style="color:white"></i></a>
+                    </div>
+                    <p id="turns">Turno: 0</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <div class="title_bar">
+                    <h4>Simulación</h4>
+                </div>
+                <div class="panel">
+                    <div id="battle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="simulation_result" style="display:none">
+        <div class="row">
+            <div class="twelve columns">
+                <div class="title_bar">
+                    <h4>Resultados</h4>
+                </div>
+                <div class="panel">
+                    <p id="enemy_lost"></p>
+
+                    <p id="user_lost"></p>
+
+                    <p id="win_lose"></p>
+
+                    <p id="credits_earned"></p>
+
+                    <div class="medium metro info btn" onclick="close_results()"><a href="#!">Cerrar</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // Avisa al usuario una vez se ha realizado una petición de realización de batalla al servidor
+        function avoid_reload(type) {
+            if (type == 1) {
+                window.onbeforeunload = function () {
+                    return 'La simulación puede fallar';
+                }
+            }
+            else {
+                window.onbeforeunload = null;
+            }
+        }
+    </script>
+{% endblock %}

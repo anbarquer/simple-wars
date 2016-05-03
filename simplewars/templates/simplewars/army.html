@@ -1,0 +1,73 @@
+{% extends "simplewars/base.html" %}
+{% block title %}SimpleWars - Reclutar/modificar unidades{% endblock %}
+{% block content %}
+    {% include 'simplewars/partials/dialog_delete_units.html' %}
+    <div id="recruit_credits">
+        <div class="row">
+            <div class="six columns">
+            {% include 'simplewars/partials/credits.html' %}
+        </div>
+            <div class="six columns">
+                <div class="title_bar">
+                    <h4>Reclutamiento</h4>
+                </div>
+                <div id="units_cost">
+                    <p id="melee_cost">Cuerpo a cuerpo: 0</p>
+
+                    <p id="defense_cost">Defensa: 0</p>
+
+                    <p id="distance_cost">Distancia: 0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="wrapper"></div>
+    </div>
+    {% include 'simplewars/partials/messages.html' %}
+    <div class="row">
+        <div class="twelve columns">
+            <div class="navbar row" id="units_nav">
+                <a class="toggle" gumby-trigger="#units_nav > form > ul" href="#"><i class="icon-plus-circled"></i></a>
+
+                <form id="recruit" action="{% url 'army' %}" method="post">
+                    {% csrf_token %}
+                    <ul class="twelve columns">
+                        {% for field in form %}
+                            <li class="field">
+                                <label for="{{ field.name }}">{{ field.label }}</label>
+                            </li>
+                            <li class="field">
+                                {{ field }}
+                            </li>
+                        {% endfor %}
+                        <li class="field">
+                            <div class="medium metro info btn"></i><input id="submit_recruit" type="submit"
+                                                                          value="Reclutar"/></div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <div class="panel">
+                <p class="medium metro info btn">
+                    <a id="select_all" href="#!" onClick="select_all_active()">Seleccionar todos</a>
+                </p>
+
+                <p class="medium metro danger btn ttip"
+                   data-tooltip="Recuperará un crédito por unidad eliminada" id="deleted_list" style="display: none;">
+                    <a href="#" class="switch" gumby-trigger="#delete_units">Eliminar</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            {% include 'simplewars/partials/army_list.html' %}
+        </div>
+    </div>
+{% endblock %}
