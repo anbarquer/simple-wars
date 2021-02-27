@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=$8(rkunv#013$7e(cil&am$e0pn9d9q5f--yajvkt8iwf)fzi'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -57,9 +57,9 @@ ROOT_URLCONF = 'tfg.urls'
 WSGI_APPLICATION = 'tfg.wsgi.application'
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'simplewarsuex@gmail.com'
-EMAIL_HOST_PASSWORD = '13589102'
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 
 
@@ -68,10 +68,10 @@ EMAIL_PORT = 587
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'simplewarsdb',
-        'USER': 'swadmin',
-        'PASSWORD': '951753aa',
+        'ENGINE': '',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
