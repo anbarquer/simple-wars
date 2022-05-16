@@ -26,8 +26,6 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 ![battle1](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-1.gif)
 ---
 ![battle2](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-2.gif)
----
-![battle3](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-4.gif)
 
 ## Map generation
 ![map](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/map-generation.gif)
