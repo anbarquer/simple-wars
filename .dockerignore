@@ -1,0 +1,9 @@
+.env/
+env/
+*.pyc
+*.pyo
+.idea
+screen/
+build/
+.gitignore
+README.md
