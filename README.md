@@ -19,7 +19,10 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 #### Stop
 * ``make stop``
 
-### Help
+#### Maps editor
+* ``make editor``
+
+#### Help
 * ``make help``
 ```
 * help                 Display help message
@@ -50,8 +53,5 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 ---
 ### Map generation
 ![map](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/map-generation.gif)
-
-### Editor
-* ``make editor``
 ---
 * [Documentación](http://dehesa.unex.es/handle/10662/3534)
