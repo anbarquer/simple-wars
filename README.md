@@ -43,8 +43,6 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 ### Simulation
 ![battle1](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-1.gif)
 ---
-![battle2](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-2.gif)
----
 ![distance](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/distance-battle.gif)
 ---
 ### Map generation
