@@ -13,10 +13,13 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 #### Install
 * ``make install && make load``
 
-#### Run
-* ``make run``
+#### Start
+* ``make start``
 
-### Manual
+#### Stop
+* ``make stop``
+
+### Help
 * ``make help``
 ```
 * help                 Display help message
