@@ -69,8 +69,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'simplewarsdb',
-        'USER': 'simplewarsadmin',
-        'PASSWORD': '123456',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': 'db',
         'PORT': '3306',
     }

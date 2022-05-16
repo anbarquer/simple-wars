@@ -95,7 +95,7 @@ ALLY = 0
 # Identificador de enemigos
 ENEMY = 1
 # Tiempo máximo en minutos
-MAX_TIME = 60
+MAX_TIME = 2
 # Máximo de atributo de clase
 MAX_ATT = 40
 # Etiquetas del diccionario resultado

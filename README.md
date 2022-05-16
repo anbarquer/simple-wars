@@ -1,16 +1,34 @@
-# Simple wars
+# TFG - UEX - 2015
+
+## Simple wars
 
 Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de fin de grado.  En el momento de acometer este proyecto se puso como objetivo el que todas las tecnologías utilizadas fuesen desconocidas para el autor. Se hizo especial incapié en el uso de WebGL para mostrar los gráficos y animaciones del juego.
 
-## Local setup
+### Local setup
+#### Prerequisites
+* [Docker](https://docs.docker.com/engine/install/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
+* [Post intallation steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
-* Run: ``docker-compose -f docker/simplewars-local.yml up --build -d``
-* Enter mysql docker container``docker exec -it docker_db_1 /bin/bash``
-* Execute inside mysql docker container: ``mysql -u simplewarsadmin -p < db.sql`` / Password: ``12346``
-* Run: ``docker-compose -f docker/simplewars-local.yml up --build -d`` again. 
-* Creds: ``simplewarsuser / 123456a``
+#### Install
+* ``make install && make load``
 
-## Screenshots
+#### Run
+* ``make run``
+
+### Manual
+* ``make help``
+```
+* help                 Display help message
+* debug                Debug Makefile itself
+* install              Install game
+* load                 Restore game data
+* start                Run game
+* editor               Run maps editor app
+* stop                 Stop game
+```
+
+### Screenshots
 ![dashboard](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/dashboard.png)
 ---
 ![formation](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/create_formation2.png)
@@ -19,15 +37,20 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 ---
 ![sim](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/simulation.png)
 ---
+### Benchmarks
 ![benchmark](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/benchmark.png)
-
-
-## Simulation
+---
+### Simulation
 ![battle1](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-1.gif)
 ---
 ![battle2](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-2.gif)
-
-## Map generation
+---
+![distance](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/distance-battle.gif)
+---
+### Map generation
 ![map](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/map-generation.gif)
+
+### Editor
+* ``make editor``
 ---
 * [Documentación](http://dehesa.unex.es/handle/10662/3534)
