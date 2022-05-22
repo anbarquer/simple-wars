@@ -1,17 +1,16 @@
-# TFG - UEX - 2015
-
-## Simple wars
+# Simple wars
 
 Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de fin de grado.  En el momento de acometer este proyecto se puso como objetivo el que todas las tecnologías utilizadas fuesen desconocidas para el autor. Se hizo especial incapié en el uso de WebGL para mostrar los gráficos y animaciones del juego.
 
-### Local setup
+### Local demo setup
 #### Prerequisites
 * [Docker](https://docs.docker.com/engine/install/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 * [Post intallation steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
 #### Install
-* ``make install && make load``
+* ``make install``
+* ``make load``
 
 #### Start
 * ``make start``
