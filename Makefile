@@ -11,6 +11,8 @@
 .EXPORT_ALL_VARIABLES:
 SHELL 			:= /bin/bash
 UNAME           := $(shell uname -s)
+DOCKER_COMPOSE  := docker compose
+DOCKER          := docker
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
@@ -29,16 +31,16 @@ debug: ## Debug Makefile itself
 	@echo ${UNAME}
 
 install:  ## Install game
-	@docker-compose -f docker/simplewars-local.yml up --build -d
+	@$(DOCKER_COMPOSE) -f docker/simplewars-local.yml up --build -d
 
 load:  ## Restore game data
-	@docker exec docker_db_1 ./dump
+	@$(DOCKER) exec docker-db-1 ./dump
 
 start:  ## Run game
-	@docker-compose -f docker/simplewars-local.yml up --build -d && echo "Open http://0.0.0.0:8000/simplewars" && echo "username / pass: simplewarsuser / 123456a"
+	@$(DOCKER_COMPOSE) -f docker/simplewars-local.yml up --build -d && echo "Open http://0.0.0.0:8000/simplewars" && echo "username / pass: simplewarsuser / 123456a"
 
 editor:  ## Run maps editor app
 	@echo "Open http://0.0.0.0:8000/simplewars/map-creator" && echo "username / pass: simplewarsadmin / 123456"
 
 stop:  ## Stop game
-	@docker-compose -f docker/simplewars-local.yml down
+	@$(DOCKER_COMPOSE) -f docker/simplewars-local.yml down
