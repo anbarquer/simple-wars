@@ -34,23 +34,23 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 ```
 
 ### Screenshots
-![dashboard](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/dashboard.png)
----
-![formation](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/create_formation2.png)
----
-![params](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle_params.png)
----
-![sim](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/simulation.png)
----
+![dashboard](screen/dashboard.png)
+
+![formation](screen/create_formation2.png)
+
+![params](screen/battle_params.png)
+
+![sim](screen/simulation.png)
+
 ### Benchmarks
-![benchmark](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/benchmark.png)
----
+![benchmark](screen/benchmark.png)
+
 ### Simulation
-![battle1](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/battle-1.gif)
----
-![distance](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/distance-battle.gif)
----
+![battle1](screen/battle-1.gif)
+
+![distance](screen/distance-battle.gif)
+
 ### Map generation
-![map](https://raw.githubusercontent.com/anbarquer/simple-wars/master/screen/map-generation.gif)
----
+![map](screen/map-generation.gif)
+
 * [Documentación](http://dehesa.unex.es/handle/10662/3534)
