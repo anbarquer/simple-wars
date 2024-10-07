@@ -1,6 +1,6 @@
 # Simple wars
 
-Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de fin de grado.  En el momento de acometer este proyecto se puso como objetivo el que todas las tecnologías utilizadas fuesen desconocidas para el autor. Se hizo especial incapié en el uso de WebGL para mostrar los gráficos y animaciones del juego.
+This strategy game was conceived and developed autonomously as a final degree project. A key objective of the project was to ensure that all technologies employed were previously unfamiliar to the developer. Particular emphasis was placed on the utilization of WebGL for rendering the game's graphics and animations.
 
 ### Local demo setup
 #### Prerequisites
@@ -53,4 +53,4 @@ Juego de estrategia ideado y desarrollado de forma autodidacta como trabajo de f
 ### Map generation
 ![map](screen/map-generation.gif)
 
-* [Documentación](http://dehesa.unex.es/handle/10662/3534)
+* [Docs](http://dehesa.unex.es/handle/10662/3534)
