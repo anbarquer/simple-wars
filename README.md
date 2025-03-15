@@ -6,7 +6,7 @@ This strategy game was conceived and developed autonomously as a final degree pr
 #### Prerequisites
 * [Docker](https://docs.docker.com/engine/install/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
-* [Post intallation steps](https://docs.docker.com/engine/install/linux-postinstall/)
+* [(Optional) Post intallation steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
 #### Install
 * ``make install``

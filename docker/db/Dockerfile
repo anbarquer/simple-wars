@@ -1,9 +1,10 @@
-FROM mysql:5.5.41
+FROM mysql:5.7
 
-RUN echo "innodb_file_per_table=1" >> /etc/mysql/my.cnf && \
-    echo "innodb_file_format = Barracuda" >> /etc/mysql/my.cnf && \
+RUN echo "[mysqld]" >> /etc/mysql/my.cnf && \
+    echo "innodb_file_per_table=1" >> /etc/mysql/my.cnf && \
+    echo "innodb_file_format=Barracuda" >> /etc/mysql/my.cnf && \
     echo "query_cache_type=1" >> /etc/mysql/my.cnf && \
-    echo "query_cache_size = 10M" >> /etc/mysql/my.cnf && \
+    echo "query_cache_size=10M" >> /etc/mysql/my.cnf && \
     echo "query_cache_limit=256K" >> /etc/mysql/my.cnf && \
     echo "#!/usr/bin/env bash" > dump && \
     echo "echo -e '\033[33mInstalling game data...\033[0m'" >> dump && \

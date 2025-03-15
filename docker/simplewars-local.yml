@@ -31,7 +31,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_PORT: '3306'
+      MYSQL_PORT: "3306"
     volumes:
       - data:/var/lib/mysql
 volumes:
